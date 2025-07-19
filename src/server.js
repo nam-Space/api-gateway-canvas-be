@@ -30,9 +30,14 @@ app.use('/v1/designs', authMiddleware, proxy(process.env.DESIGN, {
     ...proxyOptions,
 }))
 
-app.use('/v1/media', authMiddleware, proxy(process.env.UPLOAD, {
+app.use('/v1/media/upload', authMiddleware, proxy(process.env.UPLOAD, {
     ...proxyOptions,
     parseReqBody: false
+}))
+
+app.use('/v1/media', authMiddleware, proxy(process.env.UPLOAD, {
+    ...proxyOptions,
+    parseReqBody: true
 }))
 
 app.use('/v1/subscription', authMiddleware, proxy(process.env.SUBSCRIPTION, {
